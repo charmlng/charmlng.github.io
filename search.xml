@@ -497,27 +497,27 @@ console.log(newArr,998877)
     <url>/2020/11/06/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h1 id="微信小程序组件的使用"><a href="#微信小程序组件的使用" class="headerlink" title="微信小程序组件的使用"></a>微信小程序组件的使用</h1><h3 id="组件的使用"><a href="#组件的使用" class="headerlink" title="组件的使用"></a>组件的使用</h3><h4 id="组件的使用原因"><a href="#组件的使用原因" class="headerlink" title="组件的使用原因"></a>组件的使用原因</h4><p>重复出现的代码在组件的使用下可以不用去写重复的代码</p>
 <p>例如两个页面的排版相似，只有内部的数据渲染不同，这样的部分可以使用组件去封装</p>
-<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/6AXOsKT8jfY2vVU.png" alt="components相似页面.png"></p>
+<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/6AXOsKT8jfY2vVU.png"></p>
 <p><strong>components相似页面.png</strong></p>
 <p>如果两个页面都重新写，会有一大部分重复代码</p>
 <p>这里可以使用<code>components</code>组件</p>
 <h3 id="使用组件步骤"><a href="#使用组件步骤" class="headerlink" title="使用组件步骤"></a>使用组件步骤</h3><h4 id="一、创建文件夹以及文件"><a href="#一、创建文件夹以及文件" class="headerlink" title="一、创建文件夹以及文件"></a>一、创建文件夹以及文件</h4><p>创建<code>components</code>文件夹，里面创建复用的代码片段，例如创建一个<code>item</code>组件，右键创建</p>
-<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/KMicLjoqOp65zBT.png" alt="创建一个新的组件文件.png"></p>
+<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/KMicLjoqOp65zBT.png"></p>
 <p><strong>创建一个新的组件文件.png</strong></p>
 <h4 id="二、在item-wxml里写复用代码"><a href="#二、在item-wxml里写复用代码" class="headerlink" title="二、在item.wxml里写复用代码"></a>二、在<code>item.wxml</code>里写复用代码</h4><p>这样的样式就相同了</p>
 <h4 id="三、使用组件"><a href="#三、使用组件" class="headerlink" title="三、使用组件"></a>三、使用组件</h4><p>在需要使用的文件夹下的<code>json</code>文件内写引用<strong>组件标签名</strong>和<strong>地址</strong></p>
 <p>在<code>wxml</code>文件内就可以使用组件标签来调用这个写好的组件了</p>
-<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/PRlTFhULf1DvsW7.png" alt="使用组件的标签.png"></p>
+<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/PRlTFhULf1DvsW7.png"></p>
 <p><strong>使用组件的标签.png</strong></p>
 <h4 id="四、父组件自定义属性数据传向子组件"><a href="#四、父组件自定义属性数据传向子组件" class="headerlink" title="四、父组件自定义属性数据传向子组件"></a>四、父组件自定义属性数据传向子组件</h4><p>父组件数据传入子组件内原因：</p>
 <p>因为调用组件的每一个地方添加的数据可能都不同，也就是说每一个父组件的数据是独立的，所以每次单独调用组件的时候渲染的数据都是各自父组件自己的</p>
-<h5 id="首先父组件标签内自定义一个属性"><a href="#首先父组件标签内自定义一个属性" class="headerlink" title="首先父组件标签内自定义一个属性"></a>首先父组件标签内自定义一个属性</h5><p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/zLPKec5d2ZM6FV4.png" alt="组件自定义属性.png"></p>
+<h5 id="首先父组件标签内自定义一个属性"><a href="#首先父组件标签内自定义一个属性" class="headerlink" title="首先父组件标签内自定义一个属性"></a>首先父组件标签内自定义一个属性</h5><p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/zLPKec5d2ZM6FV4.png"></p>
 <p><strong>组件自定义属性.png</strong></p>
-<h5 id="接着在子组件注册这个属性"><a href="#接着在子组件注册这个属性" class="headerlink" title="接着在子组件注册这个属性"></a>接着在子组件注册这个属性</h5><p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/pwbX75ZYSMargL4.png" alt="在子组件内注册这个属性.png"></p>
+<h5 id="接着在子组件注册这个属性"><a href="#接着在子组件注册这个属性" class="headerlink" title="接着在子组件注册这个属性"></a>接着在子组件注册这个属性</h5><p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/pwbX75ZYSMargL4.png"></p>
 <p><strong>在子组件内注册这个属性.png</strong></p>
 <p>这样就将父组件内的数据传给了子组件，在子组件内调用父组件的数据就用</p>
 <p>，如下</p>
-<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/CFX9yYiBZvWuT1Q.png" alt="使用父组件的属性.png"></p>
+<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/CFX9yYiBZvWuT1Q.png"></p>
 <p><strong>使用父组件的属性.png</strong></p>
 <p>这里面的<code>img</code>,<code>name</code>,<code>count</code>都是父组件数据对象中有的属性</p>
 ]]></content>

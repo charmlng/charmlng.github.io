@@ -229,7 +229,7 @@
   </entry>
   <entry>
     <title>js中的Promise对象</title>
-    <url>/2021/04/17/js%E4%B8%AD%E7%9A%84Promise%E5%AF%B9%E8%B1%A1/</url>
+    <url>/2020/04/17/js%E4%B8%AD%E7%9A%84Promise%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<h2 id="JavaScript-Promise-对象"><a href="#JavaScript-Promise-对象" class="headerlink" title="JavaScript Promise 对象"></a>JavaScript Promise 对象</h2><p>ECMAscript 6 原生提供了 Promise 对象。</p>
 <p>Promise 对象代表了未来将要发生的事件，用来传递异步操作的消息。</p>
 <h3 id="Promise-对象有以下两个特点"><a href="#Promise-对象有以下两个特点" class="headerlink" title="Promise 对象有以下两个特点:"></a>Promise 对象有以下两个特点:</h3><p>1、对象的状态不受外界影响。Promise 对象代表一个异步操作，有三种状态：</p>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="js原型和原型链"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Hexo"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://example.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Hexo</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">js原型和原型链</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By John Doe</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-04-02</span>
+            <span class="time">16:04:31</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/JavaScript/">#JavaScript</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h2 id="1-初识"><a href="#1-初识" class="headerlink" title="1.初识"></a>1.初识</h2><h3 id="1-1内存图"><a href="#1-1内存图" class="headerlink" title="1.1内存图"></a>1.1内存图</h3><p>通过下图，我们先有一个大概的认识~</p>
+<p>使用对象模板（构造方法）Student创建对象的实例tom，这个就像妈妈生育了孩子<br>任何函数在创建的时候，会同时创建该函数的prototype属性，该属性引用的就是原型对象。原型对象就像爸爸，爸爸为孩子提供了公共属性和方法。如果创建了多个实例，各个实例内部有自己的自有属性，但这些实例都可以使用原型对象中的公共属性，就好比：亲兄弟俩各有自己的个性，也有继承自爸爸的共性<br>实例继承原型对象是通过_ _ proto_ _属性。这就像是孩子体内的基因，这个基因说明它就是其原型对象的孩子</p>
+<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/11.jpg"></p>
+<h3 id="1-2-代码"><a href="#1-2-代码" class="headerlink" title="1.2 代码"></a>1.2 代码</h3><p>上图代码~</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function Student(name,age)&#123;    &#x2F;&#x2F;构造函数</span><br><span class="line">  this.name&#x3D;name;</span><br><span class="line">  this.age&#x3D;age;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype.say&#x3D;function()&#123;    &#x2F;&#x2F;设置公共属性</span><br><span class="line">  console.log(&quot;hello&quot;);</span><br><span class="line">&#125;</span><br><span class="line">var tom &#x3D; new Student(&quot;tom&quot;,19);	&#x2F;&#x2F;创建实例</span><br><span class="line">var mary &#x3D; new Student(&quot;mary&quot;,19);</span><br><span class="line">tom.say();</span><br><span class="line">mary.say();</span><br><span class="line">console.log(tom);</span><br><span class="line">console.log(mary);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-相知"><a href="#2-相知" class="headerlink" title="2.相知"></a>2.相知</h2><h3 id="2-1自有属性和原型属性"><a href="#2-1自有属性和原型属性" class="headerlink" title="2.1自有属性和原型属性"></a>2.1自有属性和原型属性</h3><p>自有属性就好比tom有一块卡西欧手表，mary有一条粉色的裙子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tom.watch&#x3D;&quot;CASIO&quot;;</span><br><span class="line">mary.skirt&#x3D;&quot;pink&quot;;</span><br><span class="line">console.log(tom.watch);		&#x2F;&#x2F;CASIO</span><br><span class="line">console.log(mary.skirt);	&#x2F;&#x2F;pink</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>原型属性就好比tom和mary是双胞胎，他们两生日一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Student.prototype.birthday&#x3D;&quot;2000&#x2F;1&#x2F;1&quot;;</span><br><span class="line">console.log(tom.birthday)	&#x2F;&#x2F;2000&#x2F;1&#x2F;1</span><br><span class="line">console.log(mary.birthday)	&#x2F;&#x2F;2000&#x2F;1&#x2F;1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>自有属性会重写原型属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Hero()&#123;</span><br><span class="line">  this.name&#x3D;&quot;Spider man&quot;</span><br><span class="line">&#125;</span><br><span class="line">Hero.prototype.name&#x3D;&quot;Iron Man&quot;;</span><br><span class="line">var hero&#x3D; new Hero();</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;Super man</span><br><span class="line"></span><br><span class="line">delete hero.name;</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;Iron man</span><br><span class="line"></span><br><span class="line">delete Hero.prototype.name;</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-原型链"><a href="#2-2-原型链" class="headerlink" title="2.2 原型链"></a>2.2 原型链</h3><p>我们还是看图来理解<br>图中红色的链路就是所谓的原型链~</p>
+<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/22.jpg"></p>
+<p>原型对象本身也有原型<br>构造函数的原型对象中也有一个_ _ proto _ 属性，默认指向Object类型的原型对象——Object.prototype<br>Object.prototype是所有对象的原型，它包含了所有对象的公共属性和方法，比如toString方法<br>所有对象通过 _ proto _ 属性的引用关系，可以直接或间接引用到Object.prototype对象<br>使用对象的 _ proto _ _属性形成的逐级引用的关系即为原型链</p>
+<h2 id="3-三角恋"><a href="#3-三角恋" class="headerlink" title="3. 三角恋"></a>3. 三角恋</h2><p>prototype、_ _ <em>proto</em> _ _和constructor的三角关系</p>
+<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/33.jpg"></p>
+<p>通过上图可以总结得出：</p>
+<p>tom._ _ proto _ === Student.prototype<br>tom自身不具有constructor属性，Student.prototype具有constructor属性并且指向了Student函数，所以tom通过 _ proto _ _找到原型链中的constructor属性，即tom.constructor===Student</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(tom.__proto__&#x3D;&#x3D;&#x3D;Student.prototype)			&#x2F;&#x2F;true</span><br><span class="line">console.log(tom.constructor&#x3D;&#x3D;&#x3D;Student)			&#x2F;&#x2F;true</span><br><span class="line">console.log(Student.prototype.constructor&#x3D;&#x3D;&#x3D;Student)	&#x2F;&#x2F;true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

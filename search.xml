@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ES6 正则表达式</title>
+    <url>/2020/05/30/ES6-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="ES6-正则表达式"><a href="#ES6-正则表达式" class="headerlink" title="ES6 正则表达式"></a>ES6 正则表达式</h1><p>1.什么是正则表达式?</p>
+<p>正则表达式就是对字符串操作的一种逻辑公式</p>
+<p>2.正则表达式的作用?</p>
+<p>1.在字符串”查找”是否包含指定子串<br>2.从字符串中”提取”指定子串<br>3.对字符串中指定的内容进行”替换”</p>
+<p>1.字符串查找</p>
+<p>let str = “123abc456”;<br>let index = str.indexOf(“abc”);<br>let index = str.lastIndexOf(“abc”);<br>let flag = str.includes(“abc”);</p>
+<p>2.字符串提取</p>
+<p>let str = “123abc456”;<br>let startIndex = str.indexOf(“a”);<br>console.log(str.substr(startIndex, “abc”.length));</p>
+<p>3.字符串替换</p>
+<p>let str = “123abc456”;<br>str.replace(“abc”, “it666”);</p>
+<p>1.1利用正则表达式匹配(查找)</p>
+<p>let str = “123abc456”;</p>
+<p>1.2创建一个正则表达式对象<br>1.3指定匹配的规则</p>
+<p>注意点: 默认情况下在正则表达式中是区分大小写的<br>let reg = new RegExp(“A”, “i”);<br>let res = reg.test(str);<br>console.log(res);</p>
+<p>1.4例子来获取str字符串中的时间2020-1-11;</p>
+<p>let str = “abc2020-1-11def”;<br>通过构造函数创建正则表达式对象<br>let reg = new RegExp(“\d{4}-\d{1,2}-\d{1,2}”);<br>通过字面量来创建正则表达式对象<br>let reg = /\d{4}-\d{1,2}-\d{1,2}/;<br>let res = reg.test(str);<br>console.log(res);</p>
+<p>2.通过正则表达式提取符合规则的字符串</p>
+<p>let str = “abc2020-1-11def2019-11-11fdjsklf”;<br>注意点: 默认情况下在正则表达式中一旦匹配就会停止查找<br>let reg = /\d{4}-\d{1,2}-\d{1,2}/g;<br>let res = str.match(reg);<br>console.log(res);<br>console.log(res[0]);<br>console.log(res[1]);</p>
+<p>3.通过正则表达式替换符合规则的字符串</p>
+<p>let str = “abc2020-1-11def2019-11-11fdjsklf”;<br>let reg = /\d{4}-\d{1,2}-\d{1,2}/g;<br>let newStr = str.replace(reg, “it666”);<br>console.log(str);<br>console.log(newStr);</p>
+<p>量词 描述</p>
+<p>n+    匹配任何包含至少一个 n 的字符串。<br>n*    匹配任何包含零个或多个 n 的字符串。<br>n?    匹配任何包含零个或一个 n 的字符串。</p>
+<p>常用正则表达式合集:<br>验证数字：^[0-9]<em>$<br>验证n位的数字：^\d{n}$<br>验证至少n位数字：^\d{n,}$<br>验证m-n位的数字：^\d{m,n}$<br>验证零和非零开头的数字：^(0|[1-9][0-9]</em>)$<br>验证有两位小数的正实数：^[0-9]+(.[0-9]{2})?$<br>验证有1-3位小数的正实数：^[0-9]+(.[0-9]{1,3})?$<br>验证非零的正整数：^+?[1-9][0-9]<em>$<br>验证非零的负整数：^-[1-9][0-9]</em>$<br>验证非负整数（正整数 + 0）  ^\d+$<br>验证非正整数（负整数 + 0）  ^((-\d+)|(0+))$<br>验证长度为3的字符：^.{3}$<br>验证由26个英文字母组成的字符串：^[A-Za-z]+$<br>验证由26个大写英文字母组成的字符串：^[A-Z]+$<br>验证由26个小写英文字母组成的字符串：^[a-z]+$<br>验证由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$<br>验证由数字、26个英文字母或者下划线组成的字符串：^\w+$</p>
+<p>验证用户密码:^[a-zA-Z]\w{5,17}$ 正确格式为：以字母开头，长度在6-18之间，只能包含字符、数字和下划线。<br>验证是否含有 ^%&amp;’,;=?$&quot; 等字符：[^%&amp;’,;=?$\x22]+<br>验证汉字：^[\u4e00-\u9fa5],{0,}$<br>验证Email地址：^\w+[-+.]\w+)<em>@\w+([-.]\w+)<em>.\w+([-.]\w+)</em>$<br>验证InternetURL：^http://([\w-]+.)+[\w-]+(/[\w-./?%&amp;=]</em>)?$ ；^[a-zA-z]+://(w+(-w+)<em>)(.(w+(-w+)</em>))<em>(?S</em>)?$<br>验证电话号码：^(\d3,4|\d{3,4}-)?\d{7,8}$：–正确格式为：XXXX-XXXXXXX，XXXX-XXXXXXXX，XXX-XXXXXXX，XXX-XXXXXXXX，XXXXXXX，XXXXXXXX。<br>验证身份证号（15位或18位数字）：^\d{15}|\d{}18$<br>验证一年的12个月：^(0?[1-9]|1[0-2])$ 正确格式为：“01”-“09”和“1”“12”<br>验证一个月的31天：^((0?[1-9])|((1|2)[0-9])|30|31)$    正确格式为：01、09和1、31。<br>整数：^-?\d+$<br>非负浮点数（正浮点数 + 0）：^\d+(.\d+)?$<br>正浮点数   ^(([0-9]+.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]<em>.[0-9]+)|([0-9]</em>[1-9][0-9]</em>))$<br>非正浮点数（负浮点数 + 0） ^((-\d+(.\d+)?)|(0+(.0+)?))$<br>负浮点数  ^(-(([0-9]+.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]<em>.[0-9]+)|([0-9]</em>[1-9][0-9]</em>)))$<br>浮点数  ^(-?\d+)(.\d+)?$</p>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue语法</title>
     <url>/2020/11/02/Vue%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h1 id="Vue基本语法"><a href="#Vue基本语法" class="headerlink" title="Vue基本语法"></a>Vue基本语法</h1><h3 id="插值操作"><a href="#插值操作" class="headerlink" title="插值操作"></a>插值操作</h3><h4 id="Mustache"><a href="#Mustache" class="headerlink" title="Mustache"></a><code>Mustache</code></h4><p><code>Mustache</code>语法:双大括号</p>
@@ -193,6 +225,271 @@
 ]]></content>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>js中的Promise对象</title>
+    <url>/2021/04/17/js%E4%B8%AD%E7%9A%84Promise%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<h2 id="JavaScript-Promise-对象"><a href="#JavaScript-Promise-对象" class="headerlink" title="JavaScript Promise 对象"></a>JavaScript Promise 对象</h2><p>ECMAscript 6 原生提供了 Promise 对象。</p>
+<p>Promise 对象代表了未来将要发生的事件，用来传递异步操作的消息。</p>
+<h3 id="Promise-对象有以下两个特点"><a href="#Promise-对象有以下两个特点" class="headerlink" title="Promise 对象有以下两个特点:"></a>Promise 对象有以下两个特点:</h3><p>1、对象的状态不受外界影响。Promise 对象代表一个异步操作，有三种状态：</p>
+<ul>
+<li>pending: 初始状态，不是成功或失败状态。</li>
+<li>fulfilled: 意味着操作成功完成。</li>
+<li>rejected: 意味着操作失败。</li>
+</ul>
+<p>只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是 Promise 这个名字的由来，它的英语意思就是「承诺」，表示其他手段无法改变。</p>
+<p>2、一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise 对象的状态改变，只有两种可能：从 Pending 变为 Resolved 和从 Pending 变为 Rejected。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果。就算改变已经发生了，你再对 Promise 对象添加回调函数，也会立即得到这个结果。这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。</p>
+<h3 id="Promise-优缺点"><a href="#Promise-优缺点" class="headerlink" title="Promise 优缺点"></a>Promise 优缺点</h3><p>有了 Promise 对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise 对象提供统一的接口，使得控制异步操作更加容易。</p>
+<p>Promise 也有一些缺点。首先，无法取消 Promise，一旦新建它就会立即执行，无法中途取消。其次，如果不设置回调函数，Promise 内部抛出的错误，不会反应到外部。第三，当处于 Pending 状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。</p>
+<h3 id="Promise-创建"><a href="#Promise-创建" class="headerlink" title="Promise 创建"></a>Promise 创建</h3><p>要想创建一个 promise 对象、可以使用 new 来调用 Promise 的构造器来进行实例化。</p>
+<p>Promise 构造函数包含一个参数和一个带有 resolve（解析）和 reject（拒绝）两个参数的回调。在回调中执行一些操作（例如异步），如果一切都正常，则调用 resolve，否则调用 reject。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var myFirstPromise &#x3D; new Promise(function(resolve, reject)&#123;</span><br><span class="line">    &#x2F;&#x2F;当异步代码执行成功时，我们才会调用resolve(...), 当异步代码失败时就会调用reject(...)</span><br><span class="line">    &#x2F;&#x2F;在本例中，我们使用setTimeout(...)来模拟异步代码，实际编码时可能是XHR请求或是HTML5的一些API方法.</span><br><span class="line">    setTimeout(function()&#123;</span><br><span class="line">        resolve(&quot;成功!&quot;); &#x2F;&#x2F;代码正常执行！</span><br><span class="line">    &#125;, 2000);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">myFirstPromise.then(function(successMessage)&#123;</span><br><span class="line">    &#x2F;&#x2F;successMessage的值是上面调用resolve(...)方法传入的值.</span><br><span class="line">    &#x2F;&#x2F;successMessage参数不一定非要是字符串类型，这里只是举个例子</span><br><span class="line">    document.write(&quot;Yay! &quot; + successMessage);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>对于已经实例化过的 promise 对象可以调用 promise.then() 方法，传递 resolve 和 reject 方法作为回调。</p>
+<p>promise.then() 是 promise 最为常用的方法。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">promise.then(onFulfilled, onRejected)</span><br></pre></td></tr></table></figure>
+
+<p>promise简化了对error的处理，上面的代码我们也可以这样写：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">promise.then(onFulfilled).catch(onRejected)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Promise-prototype-then方法：链式操作"><a href="#Promise-prototype-then方法：链式操作" class="headerlink" title="Promise.prototype.then方法：链式操作"></a>Promise.prototype.then方法：链式操作</h2><p>Promise.prototype.then 方法返回的是一个新的 Promise 对象，因此可以采用链式写法。</p>
+<p>getJSON(“/posts.json”).then(function(json) {  return json.post; }).then(function(post) {  // proceed });</p>
+<p>上面的代码使用 then 方法，依次指定了两个回调函数。第一个回调函数完成以后，会将返回结果作为参数，传入第二个回调函数。</p>
+<p>如果前一个回调函数返回的是Promise对象，这时后一个回调函数就会等待该Promise对象有了运行结果，才会进一步调用。</p>
+<p>getJSON(“/post/1.json”).then(function(post) {  return getJSON(post.commentURL); }).then(function(comments) {  // 对comments进行处理 });</p>
+<p>这种设计使得嵌套的异步操作，可以被很容易得改写，从回调函数的”横向发展”改为”向下发展”。</p>
+<hr>
+<h2 id="Promise-prototype-catch方法：捕捉错误"><a href="#Promise-prototype-catch方法：捕捉错误" class="headerlink" title="Promise.prototype.catch方法：捕捉错误"></a>Promise.prototype.catch方法：捕捉错误</h2><p>Promise.prototype.catch 方法是 Promise.prototype.then(null, rejection) 的别名，用于指定发生错误时的回调函数。</p>
+<p>getJSON(“/posts.json”).then(function(posts) {  // some code }).catch(function(error) {  // 处理前一个回调函数运行时发生的错误  console.log(‘发生错误！’, error); });</p>
+<p>Promise 对象的错误具有”冒泡”性质，会一直向后传递，直到被捕获为止。也就是说，错误总是会被下一个 catch 语句捕获。</p>
+<p>getJSON(“/post/1.json”).then(function(post) {  return getJSON(post.commentURL); }).then(function(comments) {  // some code }).catch(function(error) {  // 处理前两个回调函数的错误 });</p>
+<hr>
+<h2 id="Promise-all方法，Promise-race方法"><a href="#Promise-all方法，Promise-race方法" class="headerlink" title="Promise.all方法，Promise.race方法"></a>Promise.all方法，Promise.race方法</h2><p>Promise.all 方法用于将多个 Promise 实例，包装成一个新的 Promise 实例。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var p &#x3D; Promise.all([p1,p2,p3]);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，Promise.all 方法接受一个数组作为参数，p1、p2、p3 都是 Promise 对象的实例。（Promise.all 方法的参数不一定是数组，但是必须具有 iterator 接口，且返回的每个成员都是 Promise 实例。）</p>
+<p>p 的状态由 p1、p2、p3 决定，分成两种情况。</p>
+<ul>
+<li>（1）只有p1、p2、p3的状态都变成fulfilled，p的状态才会变成fulfilled，此时p1、p2、p3的返回值组成一个数组，传递给p的回调函数。</li>
+<li>（2）只要p1、p2、p3之中有一个被rejected，p的状态就变成rejected，此时第一个被reject的实例的返回值，会传递给p的回调函数。</li>
+</ul>
+<p>下面是一个具体的例子。</p>
+<p>// 生成一个Promise对象的数组 var promises = [2, 3, 5, 7, 11, 13].map(function(id){  return getJSON(“/post/“ + id + “.json”); });  Promise.all(promises).then(function(posts) {  // …   }).catch(function(reason){  // … });</p>
+<p>Promise.race 方法同样是将多个 Promise 实例，包装成一个新的 Promise 实例。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var p &#x3D; Promise.race([p1,p2,p3]);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，只要p1、p2、p3之中有一个实例率先改变状态，p的状态就跟着改变。那个率先改变的Promise实例的返回值，就传递给p的返回值。</p>
+<p>如果Promise.all方法和Promise.race方法的参数，不是Promise实例，就会先调用下面讲到的Promise.resolve方法，将参数转为Promise实例，再进一步处理。</p>
+<hr>
+<h2 id="Promise-resolve-方法，Promise-reject-方法"><a href="#Promise-resolve-方法，Promise-reject-方法" class="headerlink" title="Promise.resolve 方法，Promise.reject 方法"></a>Promise.resolve 方法，Promise.reject 方法</h2><p>有时需要将现有对象转为Promise对象，Promise.resolve方法就起到这个作用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var jsPromise &#x3D; Promise.resolve($.ajax(&#39;&#x2F;whatever.json&#39;));</span><br></pre></td></tr></table></figure>
+
+<p>上面代码将 jQuery 生成 deferred 对象，转为一个新的 ES6 的 Promise 对象。</p>
+<p>如果 Promise.resolve 方法的参数，不是具有 then 方法的对象（又称 thenable 对象），则返回一个新的 Promise 对象，且它的状态为fulfilled。</p>
+<p>var p = Promise.resolve(‘Hello’);  p.then(function (s){  console.log(s) }); // Hello</p>
+<p>上面代码生成一个新的Promise对象的实例p，它的状态为fulfilled，所以回调函数会立即执行，Promise.resolve方法的参数就是回调函数的参数。</p>
+<p>如果Promise.resolve方法的参数是一个Promise对象的实例，则会被原封不动地返回。</p>
+<p>Promise.reject(reason)方法也会返回一个新的Promise实例，该实例的状态为rejected。Promise.reject方法的参数reason，会被传递给实例的回调函数。</p>
+<p>var p = Promise.reject(‘出错了’);  p.then(null, function (s){  console.log(s) }); // 出错了</p>
+<p>上面代码生成一个Promise对象的实例，状态为rejected，回调函数会立即执行。</p>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>js原型和原型链</title>
+    <url>/2020/04/02/js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
+    <content><![CDATA[<h2 id="1-初识"><a href="#1-初识" class="headerlink" title="1.初识"></a>1.初识</h2><h3 id="1-1内存图"><a href="#1-1内存图" class="headerlink" title="1.1内存图"></a>1.1内存图</h3><p>通过下图，我们先有一个大概的认识~</p>
+<p>使用对象模板（构造方法）Student创建对象的实例tom，这个就像妈妈生育了孩子<br>任何函数在创建的时候，会同时创建该函数的prototype属性，该属性引用的就是原型对象。原型对象就像爸爸，爸爸为孩子提供了公共属性和方法。如果创建了多个实例，各个实例内部有自己的自有属性，但这些实例都可以使用原型对象中的公共属性，就好比：亲兄弟俩各有自己的个性，也有继承自爸爸的共性<br>实例继承原型对象是通过_ _ proto_ _属性。这就像是孩子体内的基因，这个基因说明它就是其原型对象的孩子</p>
+<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/11.jpg"></p>
+<h3 id="1-2-代码"><a href="#1-2-代码" class="headerlink" title="1.2 代码"></a>1.2 代码</h3><p>上图代码~</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Student(name,age)&#123;    &#x2F;&#x2F;构造函数</span><br><span class="line">  this.name&#x3D;name;</span><br><span class="line">  this.age&#x3D;age;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype.say&#x3D;function()&#123;    &#x2F;&#x2F;设置公共属性</span><br><span class="line">  console.log(&quot;hello&quot;);</span><br><span class="line">&#125;</span><br><span class="line">var tom &#x3D; new Student(&quot;tom&quot;,19);	&#x2F;&#x2F;创建实例</span><br><span class="line">var mary &#x3D; new Student(&quot;mary&quot;,19);</span><br><span class="line">tom.say();</span><br><span class="line">mary.say();</span><br><span class="line">console.log(tom);</span><br><span class="line">console.log(mary);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-相知"><a href="#2-相知" class="headerlink" title="2.相知"></a>2.相知</h2><h3 id="2-1自有属性和原型属性"><a href="#2-1自有属性和原型属性" class="headerlink" title="2.1自有属性和原型属性"></a>2.1自有属性和原型属性</h3><p>自有属性就好比tom有一块卡西欧手表，mary有一条粉色的裙子</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tom.watch&#x3D;&quot;CASIO&quot;;</span><br><span class="line">mary.skirt&#x3D;&quot;pink&quot;;</span><br><span class="line">console.log(tom.watch);		&#x2F;&#x2F;CASIO</span><br><span class="line">console.log(mary.skirt);	&#x2F;&#x2F;pink</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>原型属性就好比tom和mary是双胞胎，他们两生日一样</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Student.prototype.birthday&#x3D;&quot;2000&#x2F;1&#x2F;1&quot;;</span><br><span class="line">console.log(tom.birthday)	&#x2F;&#x2F;2000&#x2F;1&#x2F;1</span><br><span class="line">console.log(mary.birthday)	&#x2F;&#x2F;2000&#x2F;1&#x2F;1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>自有属性会重写原型属性</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Hero()&#123;</span><br><span class="line">  this.name&#x3D;&quot;Spider man&quot;</span><br><span class="line">&#125;</span><br><span class="line">Hero.prototype.name&#x3D;&quot;Iron Man&quot;;</span><br><span class="line">var hero&#x3D; new Hero();</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;Super man</span><br><span class="line"></span><br><span class="line">delete hero.name;</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;Iron man</span><br><span class="line"></span><br><span class="line">delete Hero.prototype.name;</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-原型链"><a href="#2-2-原型链" class="headerlink" title="2.2 原型链"></a>2.2 原型链</h3><p>我们还是看图来理解<br>图中红色的链路就是所谓的原型链~</p>
+<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/22.jpg"></p>
+<p>原型对象本身也有原型<br>构造函数的原型对象中也有一个_ _ proto _ 属性，默认指向Object类型的原型对象——Object.prototype<br>Object.prototype是所有对象的原型，它包含了所有对象的公共属性和方法，比如toString方法<br>所有对象通过 _ proto _ 属性的引用关系，可以直接或间接引用到Object.prototype对象<br>使用对象的 _ proto _ _属性形成的逐级引用的关系即为原型链</p>
+<h2 id="3-三角恋"><a href="#3-三角恋" class="headerlink" title="3. 三角恋"></a>3. 三角恋</h2><p>prototype、_ _ <em>proto</em> _ _和constructor的三角关系</p>
+<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/33.jpg"></p>
+<p>通过上图可以总结得出：</p>
+<p>tom._ _ proto _ === Student.prototype<br>tom自身不具有constructor属性，Student.prototype具有constructor属性并且指向了Student函数，所以tom通过 _ proto _ _找到原型链中的constructor属性，即tom.constructor===Student</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">console.log(tom.__proto__&#x3D;&#x3D;&#x3D;Student.prototype)			&#x2F;&#x2F;true</span><br><span class="line">console.log(tom.constructor&#x3D;&#x3D;&#x3D;Student)			&#x2F;&#x2F;true</span><br><span class="line">console.log(Student.prototype.constructor&#x3D;&#x3D;&#x3D;Student)	&#x2F;&#x2F;true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>js常用方法&quot;</title>
+    <url>/2020/02/17/js%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="javascript常用方法"><a href="#javascript常用方法" class="headerlink" title="javascript常用方法"></a>javascript常用方法</h1><h2 id="数组转字符串"><a href="#数组转字符串" class="headerlink" title="数组转字符串"></a>数组转字符串</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; .toString()&#x2F;String()</span><br><span class="line">        var a &#x3D; [1,2,3,4,5]</span><br><span class="line">        var b &#x3D; a.toString()</span><br><span class="line">        var c &#x3D; String(a)</span><br><span class="line">        console.log(a,111)</span><br><span class="line">        console.log(b,1)</span><br><span class="line">        console.log(c,2)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="typeof-可打印是什么"><a href="#typeof-可打印是什么" class="headerlink" title="typeof 可打印是什么"></a>typeof 可打印是什么</h2><p>​      </p>
+<pre><code>    var a1 = a.join(&quot; &quot;)
+    console.log(a1,2)  // .join()将数组转成字符串
+
+    // .split()将字符串以指定的分隔符分割成数组
+    var a2 = &quot;1,2,3,4&quot;;
+    var a3 = a2.split(&quot;,&quot;)
+    console.log(a3,5)
+
+    // 数组中字符串与数字互转
+    
+    console.log(a3.map(Number),7)// 字符串转数字
+    
+    console.log(a3.map(String),7)// 数字转字符串
+
+    // 对象转字符串JSON.stringify()
+    var Obj = &#123;
+        name:&#39;胡&#39;,
+        age:12,
+        sex:&quot;男&quot;
+    &#125;
+    var str = JSON.stringify(Obj) //对象转字符串JSON.stringify()
+    var str1 = JSON.parse(str,266) //json字符串转对象JSON.parse
+    console.log(str,9)
+    console.log(str1,999)
+
+
+    // 数组转对象
+    let num = [
+        &#123;name:&#39;a&#39;,id:0&#125;,
+        &#123;name:&#39;b&#39;,id:1&#125;,
+        &#123;name:&#39;c&#39;,id:2&#125;,
+        &#123;name:&#39;d&#39;,id:3&#125;,
+    ]
+    console.log(num,8989)
+   let obj = &#123;&#125; //创建对象
+   num.forEach(item=&gt;&#123;
+       obj[item.name] = item.id
+   &#125;)
+   
+   console.log(obj,9000) //数组转对象
+
+
+//    对象转数组
+    let arr = []
+    var obj1=&#123;
+        name:&#39;张一&#39;,
+        age:25,
+        sex:&#39;男&#39;
+    &#125;
+    console.log(obj1,199199)
+   for(let v in obj1)&#123;
+       arr.push(&#123;
+           key:v,
+           value:obj1[v]
+       &#125;)
+   &#125;
+   console.log(arr,999)
+   
+   转json字符串JSON.stringify
+   var a = [&quot;我&quot;]
+   var b = JSON.stringify(a)
+</code></pre>
+<h2 id="push-pop-shift-unshift-的区别"><a href="#push-pop-shift-unshift-的区别" class="headerlink" title="push pop shift unshift 的区别"></a><strong>push pop shift unshift 的区别</strong></h2><p>push()向Array的末尾添加若干元素，<br>pop()则把Array的最后一个元素删除掉</p>
+<pre><code>unshift()方法往Array的头部添加若干元素，
+shift()方法则把Array的第一个元素删掉
+
+
+    var arr = [1,2,3];
+    arr.push(1);
+    arr  //    [1,2,3,1]    
+    arr.pop() ;
+    arr // [1,2,3]  
+    arr.unshift(1);
+    arr // [1,1,2,3]
+    arr.shift();
+    arr // [1,2,3]
+    
+    置顶
+    topStatus(index,index1,index2)&#123;
+        this.List = index
+        this.List.splice(index2,1); //索引
+        this.List.unshift(index1) //item
+    &#125;,
+</code></pre>
+<h2 id="数组合并concat"><a href="#数组合并concat" class="headerlink" title="数组合并concat()"></a>数组合并concat()</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 第一个数组</span><br><span class="line">    const val &#x3D; [</span><br><span class="line">      &#123;name:&quot;胡&quot;,id:&#39;2222&#39;&#125;,</span><br><span class="line">      &#123;name:&quot;胡1&quot;,id:&#39;3333&#39;&#125;,</span><br><span class="line">      &#123;name:&quot;胡2&quot;,id:&#39;4444&#39;&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>]
+// 第二数组
+const valList = [
+  &#123;name:&quot;强&quot;,id:&#39;55555&#39;&#125;,
+  &#123;name:&quot;强1&quot;,id:&#39;66666&#39;&#125;,
+  &#123;name:&quot;强2&quot;,id:&#39;77777&#39;&#125;
+]
+// 变成一个新数组
+const newArr = val.concat(valList)
+console.log(newArr,998877)
+</code></pre>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [&quot;xiaobin&quot;, 3, 5, 1, 12, &quot;liuqiao&quot;];</span><br><span class="line">&#x2F;&#x2F;currentValue 当前遍历的项</span><br><span class="line">&#x2F;&#x2F;index 项索引</span><br><span class="line">&#x2F;&#x2F;array  当前数组</span><br><span class="line">let array &#x3D; arr.map(function (currentValue, index, array) &#123;</span><br><span class="line">    return currentValue + &#39;hello&#39;;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(array);&#x2F;&#x2F;[&quot;xiaobinhello&quot;, &quot;3hello&quot;, &quot;5hello&quot;, &quot;1hello&quot;, &quot;12hello&quot;, &quot;liuqiaohello&quot;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [3, 5, 1, 12, 8];</span><br><span class="line">&#x2F;&#x2F;currentValue 当前遍历的项</span><br><span class="line">&#x2F;&#x2F;index 项索引</span><br><span class="line">&#x2F;&#x2F;array  当前数组</span><br><span class="line">var array&#x3D;arr.filter(function (currentValue, index, array) &#123;</span><br><span class="line">    return currentValue &gt; 5;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(array);&#x2F;&#x2F;[12, 8]</span><br><span class="line"></span><br><span class="line">案例</span><br><span class="line">add () &#123;</span><br><span class="line">      this.showplan &#x3D; true</span><br><span class="line">      console.log(this.tomorrowLogList, &#39;rrrr&#39;)</span><br><span class="line">      &#x2F;&#x2F;   1.取出数组中的id展示出来</span><br><span class="line">      const _existList &#x3D; this.mateList.map(res &#x3D;&gt; &#123; return res.id &#125;)</span><br><span class="line">      console.log(_existList, &#39;fasfasdfsadf&#39;)</span><br><span class="line">      &#x2F;&#x2F;   2.展示出不包含的id</span><br><span class="line">      this.tomorrowLogList &#x3D; this.tempTaskList.filter(res &#x3D;&gt; &#123; return _existList.indexOf(res.id) &#x3D;&#x3D;&#x3D; -1 &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [&quot;xiaoming&quot;, 3, 5, 1, 12, &quot;liuqiao&quot;];</span><br><span class="line">&#x2F;&#x2F;item 当前遍历的项</span><br><span class="line">&#x2F;&#x2F;index 项索引</span><br><span class="line">&#x2F;&#x2F;array  当前数组</span><br><span class="line">arr.forEach((item,index,array )&#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;执行某功能</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 数组去重</span><br><span class="line">  const setlist &#x3D; [1,2,3,3]</span><br><span class="line">  const newSet &#x3D; [...new Set(setlist)]</span><br><span class="line">  console.log(newSet,887766)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="vue-给数组每一项添加新字段"><a href="#vue-给数组每一项添加新字段" class="headerlink" title="vue 给数组每一项添加新字段"></a>vue 给数组每一项添加新字段</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.Array.forEach(item &#x3D;&gt; &#123;</span><br><span class="line">　　this.$set(item,&#39;字段名称&#39;,字段值)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="升序降序"><a href="#升序降序" class="headerlink" title="升序降序"></a>升序降序</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [3, 5, 1, 12];</span><br><span class="line">&#x2F;&#x2F;升序，只能对数值排序</span><br><span class="line">arr.sort(function (a, b) &#123; </span><br><span class="line">    return a - b;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr);&#x2F;&#x2F;[1, 3, 5, 12]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var arr &#x3D; [3, 5, 1, 12];</span><br><span class="line"> &#x2F;&#x2F;降序，只能对数值排序</span><br><span class="line">arr.sort(function (a, b) &#123;</span><br><span class="line">    return b - a;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr);&#x2F;&#x2F;[12, 5, </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">自定义排序函数 升序</span><br><span class="line">var arr &#x3D; [3, 5, 1, 12];</span><br><span class="line">arr.sort(function (a, b) &#123;&#x2F;&#x2F;升序</span><br><span class="line">    if (a &gt; b) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    if (a &lt; b) &#123;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr);&#x2F;&#x2F;[1, 3, 5, 12]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>px, em, rem之间的区别</title>
+    <url>/2020/02/25/px-em-rem%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p>px、em、rem都是计量单位，都能表示尺寸，但是有有所不同，而且其各有各的优缺点。</p>
+<p>px表示“绝对尺寸”（并非真正的绝对），实际上就是css中定义的像素（此像素与设备的物理像素有一定的区别，后续详细说明见文末说明1），利用px设置字体大小及元素宽高等比较稳定和精确。Px的缺点是其不能适应浏览器缩放时产生的变化，因此一般不用于响应式网站。</p>
+<p>em表示相对尺寸，其相对于当前对象内文本的font-size（如果当前对象内文本的font-size计量单位也是em，则当前对象内文本的font-size的参考对象为父元素文本font-size）。使用em可以较好的相应设备屏幕尺寸的变化，但是在进行元素设置时都需要知道父元素文本的font-size及当前对象内文本的font-size，如有遗漏可能会导致错误。</p>
+<p>rem也表示相对尺寸，其参考对象为根元素<html>的font-size，因此只需要确定这一个font-size。</p>
+<p>一、px</p>
+<p>px我们应该是再熟悉不过了吧。px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言。</p>
+<p>它的特点：</p>
+<p>IE无法调整那些使用px作为单位的字体大小；国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位；Firefox能够调整px和em，rem，但是96%以上的中国网民使用IE浏览器(或内核)。二、em</p>
+<p>em是相对长度单位。其相对于当前对象内文本的font-size，如果当前文本的字体尺寸没有设置，则相对于浏览器的默认字体尺寸。</p>
+<p>em的特点是：</p>
+<p>em的值不是固定的。em会继承父级元素的字体大小在这里有一个em使用的小技巧：任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合： 1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为 16px*62.5%=10px, 这样12px=1.2em, 10px=1em, 也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。</p>
+<p>所以在我们使用em时候，写CSS的时候，需要注意几点：</p>
+<ol>
+<li>body选择器中声明Font-size=62.5%； </li>
+<li>将你的原来的px数值除以10，然后换上em作为单位； </li>
+<li>重新计算那些被放大的字体的em数值。避免字体大小的重复声明。 也就是避免1.2 * 1.2= 1.44的现象。比如说你在#content中声明了字体大小为1.2em，那么在声明p的字体大小时就只能是1em，而不是1.2em, 因为此em非彼em，它因继承#content的字体高而变为了1em=12px</li>
+</ol>
+<p>三、rem</p>
+<p>rem这个单位是CSS3中新增的一个相对单位，目前移动开发使用也是最广泛的，它也是一个相对单位，它的相对和em就是不一样了，使用rem为元素设定字体大小时，仍是相对大小，不过相对的只是HTML根元素，是不是感觉比em要简单的多，不用时时去关注父级的情况。这个单位可谓集相对大小和绝对大小的优点于一身，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。</p>
+]]></content>
+      <tags>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>

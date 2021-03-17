@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="js常用方法&#34;"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Hexo"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://example.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Hexo</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">js常用方法&#34;</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By John Doe</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-02-17</span>
+            <span class="time">16:04:31</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/JavaScript/">#JavaScript</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="javascript常用方法"><a href="#javascript常用方法" class="headerlink" title="javascript常用方法"></a>javascript常用方法</h1><h2 id="数组转字符串"><a href="#数组转字符串" class="headerlink" title="数组转字符串"></a>数组转字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; .toString()&#x2F;String()</span><br><span class="line">        var a &#x3D; [1,2,3,4,5]</span><br><span class="line">        var b &#x3D; a.toString()</span><br><span class="line">        var c &#x3D; String(a)</span><br><span class="line">        console.log(a,111)</span><br><span class="line">        console.log(b,1)</span><br><span class="line">        console.log(c,2)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="typeof-可打印是什么"><a href="#typeof-可打印是什么" class="headerlink" title="typeof 可打印是什么"></a>typeof 可打印是什么</h2><p>​      </p>
+<pre><code>    var a1 = a.join(&quot; &quot;)
+    console.log(a1,2)  // .join()将数组转成字符串
+
+    // .split()将字符串以指定的分隔符分割成数组
+    var a2 = &quot;1,2,3,4&quot;;
+    var a3 = a2.split(&quot;,&quot;)
+    console.log(a3,5)
+
+    // 数组中字符串与数字互转
+    
+    console.log(a3.map(Number),7)// 字符串转数字
+    
+    console.log(a3.map(String),7)// 数字转字符串
+
+    // 对象转字符串JSON.stringify()
+    var Obj = &#123;
+        name:&#39;胡&#39;,
+        age:12,
+        sex:&quot;男&quot;
+    &#125;
+    var str = JSON.stringify(Obj) //对象转字符串JSON.stringify()
+    var str1 = JSON.parse(str,266) //json字符串转对象JSON.parse
+    console.log(str,9)
+    console.log(str1,999)
+
+
+    // 数组转对象
+    let num = [
+        &#123;name:&#39;a&#39;,id:0&#125;,
+        &#123;name:&#39;b&#39;,id:1&#125;,
+        &#123;name:&#39;c&#39;,id:2&#125;,
+        &#123;name:&#39;d&#39;,id:3&#125;,
+    ]
+    console.log(num,8989)
+   let obj = &#123;&#125; //创建对象
+   num.forEach(item=&gt;&#123;
+       obj[item.name] = item.id
+   &#125;)
+   
+   console.log(obj,9000) //数组转对象
+
+
+//    对象转数组
+    let arr = []
+    var obj1=&#123;
+        name:&#39;张一&#39;,
+        age:25,
+        sex:&#39;男&#39;
+    &#125;
+    console.log(obj1,199199)
+   for(let v in obj1)&#123;
+       arr.push(&#123;
+           key:v,
+           value:obj1[v]
+       &#125;)
+   &#125;
+   console.log(arr,999)
+   
+   转json字符串JSON.stringify
+   var a = [&quot;我&quot;]
+   var b = JSON.stringify(a)
+</code></pre>
+<h2 id="push-pop-shift-unshift-的区别"><a href="#push-pop-shift-unshift-的区别" class="headerlink" title="push pop shift unshift 的区别"></a><strong>push pop shift unshift 的区别</strong></h2><p>push()向Array的末尾添加若干元素，<br>pop()则把Array的最后一个元素删除掉</p>
+<pre><code>unshift()方法往Array的头部添加若干元素，
+shift()方法则把Array的第一个元素删掉
+
+
+    var arr = [1,2,3];
+    arr.push(1);
+    arr  //    [1,2,3,1]    
+    arr.pop() ;
+    arr // [1,2,3]  
+    arr.unshift(1);
+    arr // [1,1,2,3]
+    arr.shift();
+    arr // [1,2,3]
+    
+    置顶
+    topStatus(index,index1,index2)&#123;
+        this.List = index
+        this.List.splice(index2,1); //索引
+        this.List.unshift(index1) //item
+    &#125;,
+</code></pre>
+<h2 id="数组合并concat"><a href="#数组合并concat" class="headerlink" title="数组合并concat()"></a>数组合并concat()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 第一个数组</span><br><span class="line">    const val &#x3D; [</span><br><span class="line">      &#123;name:&quot;胡&quot;,id:&#39;2222&#39;&#125;,</span><br><span class="line">      &#123;name:&quot;胡1&quot;,id:&#39;3333&#39;&#125;,</span><br><span class="line">      &#123;name:&quot;胡2&quot;,id:&#39;4444&#39;&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>]
+// 第二数组
+const valList = [
+  &#123;name:&quot;强&quot;,id:&#39;55555&#39;&#125;,
+  &#123;name:&quot;强1&quot;,id:&#39;66666&#39;&#125;,
+  &#123;name:&quot;强2&quot;,id:&#39;77777&#39;&#125;
+]
+// 变成一个新数组
+const newArr = val.concat(valList)
+console.log(newArr,998877)
+</code></pre>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [&quot;xiaobin&quot;, 3, 5, 1, 12, &quot;liuqiao&quot;];</span><br><span class="line">&#x2F;&#x2F;currentValue 当前遍历的项</span><br><span class="line">&#x2F;&#x2F;index 项索引</span><br><span class="line">&#x2F;&#x2F;array  当前数组</span><br><span class="line">let array &#x3D; arr.map(function (currentValue, index, array) &#123;</span><br><span class="line">    return currentValue + &#39;hello&#39;;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(array);&#x2F;&#x2F;[&quot;xiaobinhello&quot;, &quot;3hello&quot;, &quot;5hello&quot;, &quot;1hello&quot;, &quot;12hello&quot;, &quot;liuqiaohello&quot;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [3, 5, 1, 12, 8];</span><br><span class="line">&#x2F;&#x2F;currentValue 当前遍历的项</span><br><span class="line">&#x2F;&#x2F;index 项索引</span><br><span class="line">&#x2F;&#x2F;array  当前数组</span><br><span class="line">var array&#x3D;arr.filter(function (currentValue, index, array) &#123;</span><br><span class="line">    return currentValue &gt; 5;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(array);&#x2F;&#x2F;[12, 8]</span><br><span class="line"></span><br><span class="line">案例</span><br><span class="line">add () &#123;</span><br><span class="line">      this.showplan &#x3D; true</span><br><span class="line">      console.log(this.tomorrowLogList, &#39;rrrr&#39;)</span><br><span class="line">      &#x2F;&#x2F;   1.取出数组中的id展示出来</span><br><span class="line">      const _existList &#x3D; this.mateList.map(res &#x3D;&gt; &#123; return res.id &#125;)</span><br><span class="line">      console.log(_existList, &#39;fasfasdfsadf&#39;)</span><br><span class="line">      &#x2F;&#x2F;   2.展示出不包含的id</span><br><span class="line">      this.tomorrowLogList &#x3D; this.tempTaskList.filter(res &#x3D;&gt; &#123; return _existList.indexOf(res.id) &#x3D;&#x3D;&#x3D; -1 &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [&quot;xiaoming&quot;, 3, 5, 1, 12, &quot;liuqiao&quot;];</span><br><span class="line">&#x2F;&#x2F;item 当前遍历的项</span><br><span class="line">&#x2F;&#x2F;index 项索引</span><br><span class="line">&#x2F;&#x2F;array  当前数组</span><br><span class="line">arr.forEach((item,index,array )&#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;执行某功能</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 数组去重</span><br><span class="line">  const setlist &#x3D; [1,2,3,3]</span><br><span class="line">  const newSet &#x3D; [...new Set(setlist)]</span><br><span class="line">  console.log(newSet,887766)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="vue-给数组每一项添加新字段"><a href="#vue-给数组每一项添加新字段" class="headerlink" title="vue 给数组每一项添加新字段"></a>vue 给数组每一项添加新字段</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.Array.forEach(item &#x3D;&gt; &#123;</span><br><span class="line">　　this.$set(item,&#39;字段名称&#39;,字段值)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="升序降序"><a href="#升序降序" class="headerlink" title="升序降序"></a>升序降序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [3, 5, 1, 12];</span><br><span class="line">&#x2F;&#x2F;升序，只能对数值排序</span><br><span class="line">arr.sort(function (a, b) &#123; </span><br><span class="line">    return a - b;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr);&#x2F;&#x2F;[1, 3, 5, 12]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var arr &#x3D; [3, 5, 1, 12];</span><br><span class="line"> &#x2F;&#x2F;降序，只能对数值排序</span><br><span class="line">arr.sort(function (a, b) &#123;</span><br><span class="line">    return b - a;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr);&#x2F;&#x2F;[12, 5, </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">自定义排序函数 升序</span><br><span class="line">var arr &#x3D; [3, 5, 1, 12];</span><br><span class="line">arr.sort(function (a, b) &#123;&#x2F;&#x2F;升序</span><br><span class="line">    if (a &gt; b) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    if (a &lt; b) &#123;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr);&#x2F;&#x2F;[1, 3, 5, 12]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

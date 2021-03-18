@@ -104,7 +104,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2020-04-02</span>
-            <span class="time">19:16:04</span>
+            <span class="time">14:08:30</span>
           </span>
           
         </div>
@@ -122,7 +122,7 @@
         <div class="post-content">
           <h2 id="1-初识"><a href="#1-初识" class="headerlink" title="1.初识"></a>1.初识</h2><h3 id="1-1内存图"><a href="#1-1内存图" class="headerlink" title="1.1内存图"></a>1.1内存图</h3><p>通过下图，我们先有一个大概的认识~</p>
 <p>使用对象模板（构造方法）Student创建对象的实例tom，这个就像妈妈生育了孩子<br>任何函数在创建的时候，会同时创建该函数的prototype属性，该属性引用的就是原型对象。原型对象就像爸爸，爸爸为孩子提供了公共属性和方法。如果创建了多个实例，各个实例内部有自己的自有属性，但这些实例都可以使用原型对象中的公共属性，就好比：亲兄弟俩各有自己的个性，也有继承自爸爸的共性<br>实例继承原型对象是通过_ _ proto_ _属性。这就像是孩子体内的基因，这个基因说明它就是其原型对象的孩子</p>
-<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/11.jpg"></p>
+<p><img src="/.com//11.jpg"></p>
 <h3 id="1-2-代码"><a href="#1-2-代码" class="headerlink" title="1.2 代码"></a>1.2 代码</h3><p>上图代码~</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function Student(name,age)&#123;    &#x2F;&#x2F;构造函数</span><br><span class="line">  this.name&#x3D;name;</span><br><span class="line">  this.age&#x3D;age;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype.say&#x3D;function()&#123;    &#x2F;&#x2F;设置公共属性</span><br><span class="line">  console.log(&quot;hello&quot;);</span><br><span class="line">&#125;</span><br><span class="line">var tom &#x3D; new Student(&quot;tom&quot;,19);	&#x2F;&#x2F;创建实例</span><br><span class="line">var mary &#x3D; new Student(&quot;mary&quot;,19);</span><br><span class="line">tom.say();</span><br><span class="line">mary.say();</span><br><span class="line">console.log(tom);</span><br><span class="line">console.log(mary);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -138,10 +138,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Hero()&#123;</span><br><span class="line">  this.name&#x3D;&quot;Spider man&quot;</span><br><span class="line">&#125;</span><br><span class="line">Hero.prototype.name&#x3D;&quot;Iron Man&quot;;</span><br><span class="line">var hero&#x3D; new Hero();</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;Super man</span><br><span class="line"></span><br><span class="line">delete hero.name;</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;Iron man</span><br><span class="line"></span><br><span class="line">delete Hero.prototype.name;</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="2-2-原型链"><a href="#2-2-原型链" class="headerlink" title="2.2 原型链"></a>2.2 原型链</h3><p>我们还是看图来理解<br>图中红色的链路就是所谓的原型链~</p>
-<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/22.jpg"></p>
+<p><img src="/.com//22.jpg"></p>
 <p>原型对象本身也有原型<br>构造函数的原型对象中也有一个_ _ proto _ 属性，默认指向Object类型的原型对象——Object.prototype<br>Object.prototype是所有对象的原型，它包含了所有对象的公共属性和方法，比如toString方法<br>所有对象通过 _ proto _ 属性的引用关系，可以直接或间接引用到Object.prototype对象<br>使用对象的 _ proto _ _属性形成的逐级引用的关系即为原型链</p>
 <h2 id="3-三角恋"><a href="#3-三角恋" class="headerlink" title="3. 三角恋"></a>3. 三角恋</h2><p>prototype、_ _ <em>proto</em> _ _和constructor的三角关系</p>
-<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/33.jpg"></p>
+<p><img src="/.com//33.jpg"></p>
 <p>通过上图可以总结得出：</p>
 <p>tom._ _ proto _ === Student.prototype<br>tom自身不具有constructor属性，Student.prototype具有constructor属性并且指向了Student函数，所以tom通过 _ proto _ _找到原型链中的constructor属性，即tom.constructor===Student</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(tom.__proto__&#x3D;&#x3D;&#x3D;Student.prototype)			&#x2F;&#x2F;true</span><br><span class="line">console.log(tom.constructor&#x3D;&#x3D;&#x3D;Student)			&#x2F;&#x2F;true</span><br><span class="line">console.log(Student.prototype.constructor&#x3D;&#x3D;&#x3D;Student)	&#x2F;&#x2F;true</span><br><span class="line"></span><br></pre></td></tr></table></figure>

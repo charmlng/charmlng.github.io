@@ -64,9 +64,9 @@
 
 
 
-<p><img src="Vue%E8%AF%AD%E6%B3%95.assets/OAr2TMR5pLj9vPw.png" alt="v-bind绑定class.png"></p>
+<p><img src="/.com//OAr2TMR5pLj9vPw.png" alt="v-bind绑定class.png"></p>
 <p><strong>v-bind绑定class.png</strong></p>
-<p><img src="Vue%E8%AF%AD%E6%B3%95.assets/cTLMvb8mFaRqlu5.png" alt="v-bind绑定class2.png"></p>
+<p><img src="/.com//cTLMvb8mFaRqlu5.png" alt="v-bind绑定class2.png"></p>
 <p><strong>v-bind绑定class2.png</strong></p>
 <h5 id="绑定方式一、对象语法"><a href="#绑定方式一、对象语法" class="headerlink" title="绑定方式一、对象语法"></a>绑定方式一、对象语法</h5><p>用法有：</p>
 <p>1、通过一个对象绑定一个类(可以传多个值)，并且和普通类同时存在并不冲突</p>
@@ -87,7 +87,7 @@
 
 
 
-<p><img src="Vue%E8%AF%AD%E6%B3%95.assets/xpUDdeOoZSz6cV3.png" alt="v-bind绑定style.png"></p>
+<p><img src="/.com//xpUDdeOoZSz6cV3.png" alt="v-bind绑定style.png"></p>
 <p><strong>v-bind绑定style.png</strong></p>
 <h5 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;h2 class&#x3D;&quot;title&quot; :style&#x3D;&quot;[baseStyle1 , baseStyle2]&quot;&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;h2&gt;</span><br></pre></td></tr></table></figure>
 
@@ -303,7 +303,7 @@
     <url>/2020/04/02/js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
     <content><![CDATA[<h2 id="1-初识"><a href="#1-初识" class="headerlink" title="1.初识"></a>1.初识</h2><h3 id="1-1内存图"><a href="#1-1内存图" class="headerlink" title="1.1内存图"></a>1.1内存图</h3><p>通过下图，我们先有一个大概的认识~</p>
 <p>使用对象模板（构造方法）Student创建对象的实例tom，这个就像妈妈生育了孩子<br>任何函数在创建的时候，会同时创建该函数的prototype属性，该属性引用的就是原型对象。原型对象就像爸爸，爸爸为孩子提供了公共属性和方法。如果创建了多个实例，各个实例内部有自己的自有属性，但这些实例都可以使用原型对象中的公共属性，就好比：亲兄弟俩各有自己的个性，也有继承自爸爸的共性<br>实例继承原型对象是通过_ _ proto_ _属性。这就像是孩子体内的基因，这个基因说明它就是其原型对象的孩子</p>
-<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/11.jpg"></p>
+<p><img src="/.com//11.jpg"></p>
 <h3 id="1-2-代码"><a href="#1-2-代码" class="headerlink" title="1.2 代码"></a>1.2 代码</h3><p>上图代码~</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Student(name,age)&#123;    &#x2F;&#x2F;构造函数</span><br><span class="line">  this.name&#x3D;name;</span><br><span class="line">  this.age&#x3D;age;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype.say&#x3D;function()&#123;    &#x2F;&#x2F;设置公共属性</span><br><span class="line">  console.log(&quot;hello&quot;);</span><br><span class="line">&#125;</span><br><span class="line">var tom &#x3D; new Student(&quot;tom&quot;,19);	&#x2F;&#x2F;创建实例</span><br><span class="line">var mary &#x3D; new Student(&quot;mary&quot;,19);</span><br><span class="line">tom.say();</span><br><span class="line">mary.say();</span><br><span class="line">console.log(tom);</span><br><span class="line">console.log(mary);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -319,10 +319,10 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Hero()&#123;</span><br><span class="line">  this.name&#x3D;&quot;Spider man&quot;</span><br><span class="line">&#125;</span><br><span class="line">Hero.prototype.name&#x3D;&quot;Iron Man&quot;;</span><br><span class="line">var hero&#x3D; new Hero();</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;Super man</span><br><span class="line"></span><br><span class="line">delete hero.name;</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;Iron man</span><br><span class="line"></span><br><span class="line">delete Hero.prototype.name;</span><br><span class="line">console.log(hero.name);   &#x2F;&#x2F;undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="2-2-原型链"><a href="#2-2-原型链" class="headerlink" title="2.2 原型链"></a>2.2 原型链</h3><p>我们还是看图来理解<br>图中红色的链路就是所谓的原型链~</p>
-<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/22.jpg"></p>
+<p><img src="/.com//22.jpg"></p>
 <p>原型对象本身也有原型<br>构造函数的原型对象中也有一个_ _ proto _ 属性，默认指向Object类型的原型对象——Object.prototype<br>Object.prototype是所有对象的原型，它包含了所有对象的公共属性和方法，比如toString方法<br>所有对象通过 _ proto _ 属性的引用关系，可以直接或间接引用到Object.prototype对象<br>使用对象的 _ proto _ _属性形成的逐级引用的关系即为原型链</p>
 <h2 id="3-三角恋"><a href="#3-三角恋" class="headerlink" title="3. 三角恋"></a>3. 三角恋</h2><p>prototype、_ _ <em>proto</em> _ _和constructor的三角关系</p>
-<p><img src="js%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE.assets/33.jpg"></p>
+<p><img src="/.com//33.jpg"></p>
 <p>通过上图可以总结得出：</p>
 <p>tom._ _ proto _ === Student.prototype<br>tom自身不具有constructor属性，Student.prototype具有constructor属性并且指向了Student函数，所以tom通过 _ proto _ _找到原型链中的constructor属性，即tom.constructor===Student</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">console.log(tom.__proto__&#x3D;&#x3D;&#x3D;Student.prototype)			&#x2F;&#x2F;true</span><br><span class="line">console.log(tom.constructor&#x3D;&#x3D;&#x3D;Student)			&#x2F;&#x2F;true</span><br><span class="line">console.log(Student.prototype.constructor&#x3D;&#x3D;&#x3D;Student)	&#x2F;&#x2F;true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -471,7 +471,7 @@ console.log(newArr,998877)
     <content><![CDATA[<p>px、em、rem都是计量单位，都能表示尺寸，但是有有所不同，而且其各有各的优缺点。</p>
 <p>px表示“绝对尺寸”（并非真正的绝对），实际上就是css中定义的像素（此像素与设备的物理像素有一定的区别，后续详细说明见文末说明1），利用px设置字体大小及元素宽高等比较稳定和精确。Px的缺点是其不能适应浏览器缩放时产生的变化，因此一般不用于响应式网站。</p>
 <p>em表示相对尺寸，其相对于当前对象内文本的font-size（如果当前对象内文本的font-size计量单位也是em，则当前对象内文本的font-size的参考对象为父元素文本font-size）。使用em可以较好的相应设备屏幕尺寸的变化，但是在进行元素设置时都需要知道父元素文本的font-size及当前对象内文本的font-size，如有遗漏可能会导致错误。</p>
-<p>rem也表示相对尺寸，其参考对象为根元素<html>的font-size，因此只需要确定这一个font-size。</p>
+<p>rem也表示相对尺寸，其参考对象为根元素<html>的font-size，因此只需要确定这一个font-size。</html></p>
 <p>一、px</p>
 <p>px我们应该是再熟悉不过了吧。px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言。</p>
 <p>它的特点：</p>
@@ -497,25 +497,25 @@ console.log(newArr,998877)
     <url>/2020/11/06/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h1 id="微信小程序组件的使用"><a href="#微信小程序组件的使用" class="headerlink" title="微信小程序组件的使用"></a>微信小程序组件的使用</h1><h3 id="组件的使用"><a href="#组件的使用" class="headerlink" title="组件的使用"></a>组件的使用</h3><h4 id="组件的使用原因"><a href="#组件的使用原因" class="headerlink" title="组件的使用原因"></a>组件的使用原因</h4><p>重复出现的代码在组件的使用下可以不用去写重复的代码</p>
 <p>例如两个页面的排版相似，只有内部的数据渲染不同，这样的部分可以使用组件去封装</p>
-<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/01.png"></p>
+<p><img src="/.com//01.png"></p>
 <p><strong>components相似页面.png</strong></p>
 <p>如果两个页面都重新写，会有一大部分重复代码</p>
 <p>这里可以使用<code>components</code>组件</p>
 <h3 id="使用组件步骤"><a href="#使用组件步骤" class="headerlink" title="使用组件步骤"></a>使用组件步骤</h3><h4 id="一、创建文件夹以及文件"><a href="#一、创建文件夹以及文件" class="headerlink" title="一、创建文件夹以及文件"></a>一、创建文件夹以及文件</h4><p>创建<code>components</code>文件夹，里面创建复用的代码片段，例如创建一个<code>item</code>组件，右键创建</p>
-<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/02.png"></p>
+<p><img src="/.com//02.png"></p>
 <p><strong>创建一个新的组件文件.png</strong></p>
 <h4 id="二、在item-wxml里写复用代码"><a href="#二、在item-wxml里写复用代码" class="headerlink" title="二、在item.wxml里写复用代码"></a>二、在<code>item.wxml</code>里写复用代码</h4><p>这样的样式就相同了</p>
 <h4 id="三、使用组件"><a href="#三、使用组件" class="headerlink" title="三、使用组件"></a>三、使用组件</h4><p>在需要使用的文件夹下的<code>json</code>文件内写引用<strong>组件标签名</strong>和<strong>地址</strong></p>
 <p>在<code>wxml</code>文件内就可以使用组件标签来调用这个写好的组件了</p>
-<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/03.png"></p>
+<p><img src="/.com//03.png"></p>
 <h4 id="四、父组件自定义属性数据传向子组件"><a href="#四、父组件自定义属性数据传向子组件" class="headerlink" title="四、父组件自定义属性数据传向子组件"></a>四、父组件自定义属性数据传向子组件</h4><p>父组件数据传入子组件内原因：</p>
 <p>因为调用组件的每一个地方添加的数据可能都不同，也就是说每一个父组件的数据是独立的，所以每次单独调用组件的时候渲染的数据都是各自父组件自己的</p>
-<h5 id="首先父组件标签内自定义一个属性"><a href="#首先父组件标签内自定义一个属性" class="headerlink" title="首先父组件标签内自定义一个属性"></a>首先父组件标签内自定义一个属性</h5><p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/05.png"></p>
+<h5 id="首先父组件标签内自定义一个属性"><a href="#首先父组件标签内自定义一个属性" class="headerlink" title="首先父组件标签内自定义一个属性"></a>首先父组件标签内自定义一个属性</h5><p><img src="/.com//05.png"></p>
 <p><strong>组件自定义属性.png</strong></p>
 <h5 id="接着在子组件注册这个属性"><a href="#接着在子组件注册这个属性" class="headerlink" title="接着在子组件注册这个属性"></a>接着在子组件注册这个属性</h5><p><strong>在子组件内注册这个属性.png</strong></p>
 <p>这样就将父组件内的数据传给了子组件，在子组件内调用父组件的数据就用</p>
 <p>，如下</p>
-<p><img src="%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.assets/06.png"></p>
+<p><img src="/.com//06.png"></p>
 <p><strong>使用父组件的属性.png</strong></p>
 <p>这里面的<code>img</code>,<code>name</code>,<code>count</code>都是父组件数据对象中有的属性</p>
 ]]></content>
@@ -836,7 +836,7 @@ console.log(newArr,998877)
 <li><p>点击HbuilderX菜单栏文件&gt;项目&gt;新建</p>
 </li>
 <li><p>选择uni-app,填写项目名称，项目创建的目录</p>
-<p><img src="uni-app%E7%9A%84%E4%BD%BF%E7%94%A8.assets/LmBqE7uJa2KoGQl.png" alt="img"></p>
+<p><img src="/.com//LmBqE7uJa2KoGQl.png" alt="img"></p>
 </li>
 </ul>
 <h2 id="1-4-使用vue-cli脚手架创建ts项目"><a href="#1-4-使用vue-cli脚手架创建ts项目" class="headerlink" title="1.4 使用vue/cli脚手架创建ts项目"></a>1.4 使用vue/cli脚手架创建ts项目</h2><p>javascript</p>
@@ -844,7 +844,7 @@ console.log(newArr,998877)
 
 
 
-<p><img src="uni-app%E7%9A%84%E4%BD%BF%E7%94%A8.assets/4Kvbp9yzcCJ6gnj.png" alt="1602848342568.png"></p>
+<p><img src="/.com//4Kvbp9yzcCJ6gnj.png" alt="1602848342568.png"></p>
 <p><strong>1602848342568.png</strong></p>
 <h2 id="1-5-运行项目"><a href="#1-5-运行项目" class="headerlink" title="1.5 运行项目"></a>1.5 运行项目</h2><p>在菜单栏中点击运行，运行到浏览器，选择浏览器即可运行</p>
 <p>在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 微信开发者工具，即可在微信开发者工具里面体验uni-app</p>
@@ -1266,7 +1266,7 @@ console.log(newArr,998877)
 <h2 id="4-2-view视图容器组件的用法"><a href="#4-2-view视图容器组件的用法" class="headerlink" title="4.2 view视图容器组件的用法"></a>4.2 view视图容器组件的用法</h2><blockquote>
 <p>View 视图容器， 类似于 HTML 中的 div</p>
 </blockquote>
-<h4 id="001-组件的属性"><a href="#001-组件的属性" class="headerlink" title="001 - 组件的属性"></a>001 - 组件的属性</h4><p><img src="uni-app%E7%9A%84%E4%BD%BF%E7%94%A8.assets/7Atvbg1BofdWGaQ.png" alt="img"></p>
+<h4 id="001-组件的属性"><a href="#001-组件的属性" class="headerlink" title="001 - 组件的属性"></a>001 - 组件的属性</h4><p><img src="/.com//7Atvbg1BofdWGaQ.png" alt="img"></p>
 <h4 id="002-代码案例-1"><a href="#002-代码案例-1" class="headerlink" title="002 - 代码案例"></a>002 - 代码案例</h4><p>html</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;box2&quot;</span> <span class="attr">hover-class</span>=<span class="string">&quot;box2_active&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&#x27;box1&#x27;</span> <span class="attr">hover-class</span>=<span class="string">&#x27;active&#x27;</span> <span class="attr">hover-stop-propagation</span> <span class="attr">:hover-start-time</span>=<span class="string">&quot;2000&quot;</span> <span class="attr">:hover-stay-time</span>=<span class="string">&#x27;2000&#x27;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
